@@ -16,7 +16,7 @@ p{
     background-color: white;
     padding: 30px;
     height: 380px;
-    width: 350px;  
+    width: 500px;  
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -32,5 +32,12 @@ p{
     font-weight: bold;
 }
 #delbtn{
+    margin-left: 5px;
     background-color: red;
+    border-radius: 6px;
+}
+#cmptbtn{
+    margin-left: 5px;
+    background-color: green;
+    border-radius: 6px;
 }

@@ -13,17 +13,27 @@ function createTaskElement(task)
 {
    var para = document.createElement("p");
     var del = document.createElement("input");
-    
+   
+    var completebtn = document.createElement("input");
+    completebtn.type = "button";
+    completebtn.id ="cmptbtn";
+    completebtn.value="complete";
+
     del.type ="button";
     del.value ="Delete";
     del.id = "delbtn";
     
     para.innerHTML = task;
+    para.appendChild(completebtn);
     para.appendChild(del);
     displayContainer.appendChild(para);
     
     inputbox.value="";
-    
+    completebtn.addEventListener("click", () => {
+        para.style.textDecoration = "line-through";
+        para.style.opacity = "0.6";
+        completebtn.disabled = true; 
+    });
     del.addEventListener('click',()=>
     {
         para.remove();
@@ -56,6 +66,18 @@ function editTask(para,task)
                 store[index] = updatedTask;
                 localStorage.setItem('task', JSON.stringify(store)); 
                 para.innerHTML = updatedTask; 
+                
+                var completebtn = document.createElement("input");
+                completebtn.type = "button";
+                completebtn.id ="cmptbtn";
+                completebtn.value="complete";
+                completebtn.addEventListener("click", () => {
+                    para.style.textDecoration = "line-through";
+                    para.style.opacity = "0.6";
+                    completebtn.disabled = true; 
+                });
+                para.appendChild(completebtn);
+                
                 para.appendChild(createDeleteButton(para, updatedTask)); 
             }
         });
